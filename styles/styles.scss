@@ -1,0 +1,89 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+@import "html";
+@import "text";
+@import "grid";
+@import "blocks";
+@import "buttons";
+@import "forms";
+
+// Card Styles
+.card {
+	background-color: #D2D1D0;
+	padding: $-l;
+	display: inline-block;
+	width: 300px;
+	text-decoration: none;
+	color: #555;
+	border-radius: 3px;
+	box-shadow: 0 0.5px 3px 0px rgba(0, 0, 0, 0.18);
+	transition: all ease-in-out 160ms;
+	vertical-align: top;
+	margin-right: $-l;
+	margin-bottom: $-xl;
+	h2 {
+		margin-top: 0;
+		font-size: 36px;
+	}
+	hr {
+		background-color: rgba(0, 0, 0, 0.21);
+	}
+	.summary {
+		height: 44px;
+	}
+	.tech {
+		margin-bottom: 0;
+		font-size: 0.95em;
+	}
+	.tech span {
+		margin-right: $-s;
+	}
+	&:hover {
+		text-decoration: none;
+		color: #555;
+		box-shadow: 0 0.5px 10px 0px rgba(0, 0, 0, 0.26);
+	}
+	&.orange {
+		background-color: #FCC768;
+	}
+	&.blue {
+		background-color: #ACC9FD;
+	}
+	&.green {
+		background-color: #92E5A0;
+	}
+	&.red {
+		background-color: #EDA6A1;
+	}
+	&.yellow {
+		background-color: #FAF08A;
+	}
+	&.purple {
+		background-color: #DCBDF9;
+	}
+}
+
+// Ripple Styles
+.ripples {
+  overflow: hidden;
+  position: relative;
+}
+.ripples svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@keyframes scale {
+    0%   {transform: scale3d(0, 0, 0); opacity: 1;}
+    90%   {transform: scale3d(0.9, 0.9, 0.9); opacity: 0.8;}
+    100% {transform: scale3d(1, 1, 1); opacity: 0;}
+}
+.ripples circle {
+  fill: rgba(0,0,0,0.1);
+  transform-origin: 50% 50% 0;
+  opacity: 0;
+  animation: scale 900ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

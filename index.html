@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Project</title>
+  <link rel="stylesheet" href="dist/styles.css">
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,900,700italic' rel='stylesheet' type='text/css'>
+<style>
+/*   * {
+  background-color: rgba(0, 0, 0, 0.015);
+} */
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="padded">
+      <div class="logo">danb.me</div>
+    </div>
+  </header>
+
+  <section class="container">
+    <h2>My Projects</h2>
+
+    <a href="http://social-links.danb.me/" target="_href" class="card ripples orange">
+      <h2>Social Share Links</h2>
+      <p class="summary">A site to generate anchor links for social sharing.</p>
+      <hr>
+      <p class="tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SASS</span></p>
+    </a>
+
+    <a href="http://ssddanbrown.github.io/Brazen/" target="_href" class="card ripples green">
+      <h2>The Brazen Project</h2>
+      <p class="summary">An opinionated SASS &amp; HTML based website starter kit.</p>
+      <hr>
+      <p class="tech"><span>HTML</span><span>CSS</span><span>Gulp</span><span>SASS</span></p>
+    </a>
+
+    <a href="https://iwanttolearn.io" target="_href" class="card ripples blue">
+      <h2>I Want To <br> Learn</h2>
+      <p class="summary">A site to list learning resources for web &amp; coding based technologies.</p>
+      <hr>
+      <p class="tech"><span>Laravel</span><span>PHP</span><span>SASS</span><span>HHVM</span></p>
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=com.southerntemp.thermocouples" target="_href" class="card ripples red">
+      <h2>Thermocouples For Android</h2>
+      <p class="summary">An app for viewing and calculating thermocouple info.</p>
+      <hr>
+      <p class="tech"><span>Android</span><span>Java</span><span>Material Design</span></p>
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=me.danb.retherm" target="_href" class="card ripples yellow">
+      <h2>Retherm For Android</h2>
+      <p class="summary">An app to convert between RTD resistance and temperature.</p>
+      <hr>
+      <p class="tech"><span>Android</span><span>Java</span><span>Thermal Calculation</span></p>
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=me.danb.retherm" target="_href" class="card ripples purple">
+      <h2>E-bikeshop Ecommerce</h2>
+      <p class="summary">An online shop selling electric bikes &amp; a popular blog.</p>
+      <hr>
+      <p class="tech"><span>PHP</span><span>Web Design</span><span>SASS</span><span>HTML</span></p>
+    </a>
+
+  </section>
+<script type="text/javascript">
+  function ripples(selector) {
+    window.addEventListener('load', function() {
+      var rippleElements = document.querySelectorAll(selector);
+      for (var i = rippleElements.length - 1; i >= 0; i--) {
+        rippleElements[i].addEventListener('mousedown', rippleClick);
+      }
+        // Original taken from: http://webdesign.tutsplus.com/tutorials/recreating-the-touch-ripple-effect-as-seen-on-google-design--cms-21655
+      function rippleClick(e) {
+        // Get this elements position within page
+        var elem = this;
+        var rect = elem.getBoundingClientRect();
+        var offset = {
+          top: rect.top + document.body.scrollTop,
+          left: rect.left + document.body.scrollLeft
+        };
+        // Get position and size information for ripple circle
+        var setX = parseInt(e.pageX - offset.left);
+        var setY = parseInt(e.pageY - offset.top);
+        var r = Math.sqrt(Math.pow(elem.offsetWidth, 2) + Math.pow(elem.offsetHeight, 2));
+        // Remove old svg elements
+        removeRipples(elem);
+        // Create new svg elements and add to element
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.innerHTML = '<circle cx="'+setX+'" cy="'+setY+'" r="'+r+'"></circle>';
+        elem.appendChild(svg);
+        setTimeout(function() {
+          removeRipples(elem);
+        }, 900);
+      }
+
+      function removeRipples(elem) {
+          svgChildElements = elem.querySelectorAll("svg");
+          for (var i = svgChildElements.length - 1; i >= 0; i--) {
+            elem.removeChild(svgChildElements[i]);
+          }
+      }
+
+    }, false);
+  }
+  ripples('.ripples');
+</script>
+</body>
+</html>
