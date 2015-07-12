@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Sample Project</title>
   <link rel="stylesheet" href="dist/styles.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='//fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,900,700italic' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
 <style>
 /*   * {
   background-color: rgba(0, 0, 0, 0.015);
@@ -14,13 +17,17 @@
 <body>
 
   <header>
-    <div class="padded">
-      <div class="logo">danb.me</div>
+    <div class="padded clearfix">
+      <div class="logo float">Dan Brown</div>
+      <ul class="inline pull-right">
+        <li><a href="https://github.com/ssddanbrown"><i class="fa fa-github"></i></a></li>
+        <li><a href="https://uk.linkedin.com/in/danjamesbrown"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
     </div>
   </header>
 
   <section class="container">
-    <h2>My Projects</h2>
+    <h2>My Latest Projects</h2>
 
     <a href="http://social-links.danb.me/" target="_href" class="card ripples orange">
       <h2>Social Share Links</h2>
@@ -65,47 +72,6 @@
     </a>
 
   </section>
-<script type="text/javascript">
-  function ripples(selector) {
-    window.addEventListener('load', function() {
-      var rippleElements = document.querySelectorAll(selector);
-      for (var i = rippleElements.length - 1; i >= 0; i--) {
-        rippleElements[i].addEventListener('mousedown', rippleClick);
-      }
-        // Original taken from: http://webdesign.tutsplus.com/tutorials/recreating-the-touch-ripple-effect-as-seen-on-google-design--cms-21655
-      function rippleClick(e) {
-        // Get this elements position within page
-        var elem = this;
-        var rect = elem.getBoundingClientRect();
-        var offset = {
-          top: rect.top + document.body.scrollTop,
-          left: rect.left + document.body.scrollLeft
-        };
-        // Get position and size information for ripple circle
-        var setX = parseInt(e.pageX - offset.left);
-        var setY = parseInt(e.pageY - offset.top);
-        var r = Math.sqrt(Math.pow(elem.offsetWidth, 2) + Math.pow(elem.offsetHeight, 2));
-        // Remove old svg elements
-        removeRipples(elem);
-        // Create new svg elements and add to element
-        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.innerHTML = '<circle cx="'+setX+'" cy="'+setY+'" r="'+r+'"></circle>';
-        elem.appendChild(svg);
-        setTimeout(function() {
-          removeRipples(elem);
-        }, 900);
-      }
-
-      function removeRipples(elem) {
-          svgChildElements = elem.querySelectorAll("svg");
-          for (var i = svgChildElements.length - 1; i >= 0; i--) {
-            elem.removeChild(svgChildElements[i]);
-          }
-      }
-
-    }, false);
-  }
-  ripples('.ripples');
-</script>
+  <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

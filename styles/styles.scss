@@ -12,7 +12,7 @@
 .card {
 	background-color: #D2D1D0;
 	padding: $-l;
-	display: inline-block;
+	display: none;
 	width: 300px;
 	text-decoration: none;
 	color: #555;
@@ -64,6 +64,34 @@
 	}
 }
 
+// Animation-specific card stuff
+@keyframes card-in {
+    0%   {transform: translate3d(0px, 10px, 0) scale3d(0, 0, 0); opacity: 0.5;}
+    100% {transform: translate3d(0, 0 ,0) scale3d(1, 1, 1); opacity: 1;}
+}
+.card-anim {
+	animation: card-in 900ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transform-origin: 0 0 0;
+}
+@keyframes card-text-in {
+    0%   {transform: translate3d(-60px, 0, 0); opacity: 0;}
+    50%   {transform: translate3d(-60px, 0, 0); opacity: 0;}
+    100% {transform: translate3d(0, 0 ,0); opacity: 1;}
+}
+@keyframes card-hr-in {
+    0%   {transform: scale3d(0, 1, 1) translate3d(-60px, 0, 0); opacity: 1;}
+    50%   {transform: scale3d(0, 1, 1) translate3d(-60px, 0, 0); opacity: 1;}
+    100% {transform: scale3d(1, 1 ,1) translate3d(0, 0, 0); opacity: 1;}
+}
+.card-anim {
+	h2, p {
+		animation: card-text-in 1800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	hr {
+		animation: card-hr-in 1800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		transform-origin: 0 0 0;
+	}
+}
 // Ripple Styles
 .ripples {
   overflow: hidden;

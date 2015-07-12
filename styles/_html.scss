@@ -11,3 +11,15 @@ body {
 	color: #444;
 	-webkit-font-smoothing: antialiased;
 }
+
+ul.inline {
+	list-style: none;
+	margin-bottom: $-s;
+	li {
+		display: inline-block;
+		margin-left: $-m;
+		i {
+			font-size: 1.4em;
+		}
+	}
+}
