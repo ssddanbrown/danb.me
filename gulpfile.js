@@ -30,8 +30,8 @@ gulp.task('sass', function () {
 gulp.task('default', ['sass-dev']);
 gulp.task('production', ['sass']);
 
-gulp.task('watch', function() {
+gulp.task('watch', ['sass-dev'], function() {
 	livereload.listen();
-  gulp.watch(['index.html']).on('change', livereload.changed);
+  gulp.watch(['*.html', '*.js']).on('change', livereload.changed);
 	gulp.watch('./styles/**', ['sass-dev']);
 });

@@ -22,6 +22,7 @@
 	vertical-align: top;
 	margin-right: $-l;
 	margin-bottom: $-xl;
+	user-select: none;
 	h2 {
 		margin-top: 0;
 		font-size: 36px;
@@ -65,12 +66,13 @@
 }
 
 // Animation-specific card stuff
+$animTime: 600ms;
 @keyframes card-in {
     0%   {transform: translate3d(0px, 10px, 0) scale3d(0, 0, 0); opacity: 0.5;}
     100% {transform: translate3d(0, 0 ,0) scale3d(1, 1, 1); opacity: 1;}
 }
 .card-anim {
-	animation: card-in 900ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	animation: card-in $animTime $anim-material;
 	transform-origin: 0 0 0;
 }
 @keyframes card-text-in {
@@ -85,10 +87,10 @@
 }
 .card-anim {
 	h2, p {
-		animation: card-text-in 1800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		animation: card-text-in $animTime*2 $anim-material;
 	}
 	hr {
-		animation: card-hr-in 1800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		animation: card-hr-in $animTime*2 $anim-material;
 		transform-origin: 0 0 0;
 	}
 }
@@ -113,5 +115,5 @@
   fill: rgba(0,0,0,0.1);
   transform-origin: 50% 50% 0;
   opacity: 0;
-  animation: scale 900ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: scale 900ms $anim-material;
 }
