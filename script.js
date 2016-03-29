@@ -9,7 +9,7 @@
         "title": "BookStack Platform",
         "link": "https://www.bookstackapp.com",
         "description": "An easy-to-use and free platform for sharing documentation.",
-        "skills": ["Laravel", "MySQL", "Vue.js", "PHP"],
+        "skills": ["Laravel", "MySQL", "Angular JS", "PHP"],
         "color": "yellow"
     }, {
         "title": "Social Share Links",
