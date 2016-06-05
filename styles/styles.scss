@@ -12,7 +12,7 @@
 .card {
 	background-color: #D2D1D0;
 	padding: $-l;
-	display: none;
+	display: inline-block;
 	width: 300px;
 	text-decoration: none;
 	color: #555;
@@ -23,6 +23,8 @@
 	margin-right: $-l;
 	margin-bottom: $-xl;
 	user-select: none;
+	opacity: 0;
+	will-change: transform;
 	h2 {
 		margin-top: 0;
 		font-size: 36px;
@@ -44,6 +46,7 @@
 		text-decoration: none;
 		color: #555;
 		box-shadow: 0 0.5px 10px 0px rgba(0, 0, 0, 0.26);
+		transform: translate3d(0, -5px, 0); 
 	}
 	&.orange {
 		background-color: #FCC768;
@@ -77,7 +80,7 @@ $animTime: 600ms;
 }
 @keyframes card-text-in {
     0%   {transform: translate3d(-60px, 0, 0); opacity: 0;}
-    50%   {transform: translate3d(-60px, 0, 0); opacity: 0;}
+    30%   {transform: translate3d(-60px, 0, 0); opacity: 0;}
     100% {transform: translate3d(0, 0 ,0); opacity: 1;}
 }
 @keyframes card-hr-in {
@@ -85,6 +88,7 @@ $animTime: 600ms;
     50%   {transform: scale3d(0, 1, 1) translate3d(-60px, 0, 0); opacity: 1;}
     100% {transform: scale3d(1, 1 ,1) translate3d(0, 0, 0); opacity: 1;}
 }
+
 .card-anim {
 	h2, p {
 		animation: card-text-in $animTime*2 $anim-material;
@@ -94,6 +98,7 @@ $animTime: 600ms;
 		transform-origin: 0 0 0;
 	}
 }
+
 // Ripple Styles
 .ripples {
   overflow: hidden;

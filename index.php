@@ -10,13 +10,14 @@
   <title>Dan Brown - UK Web Developer</title>
 
   <!-- Icons -->
-  <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="dist/styles.css">
+  <style>
+    <?php include('dist/styles.css'); ?>
+  </style>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link href='//fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,900,700italic' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -32,20 +33,28 @@
     </div>
   </header>
 
+  <?php 
+
+    $projectData = file_get_contents('projects.json');
+    $projects = json_decode($projectData)->projects;
+
+   ?>
+
   <section class="container" id="projects">
     <h2>My Latest Projects</h2>
 
-    <a v-for="project in projects" :href="project.link" target="_href" class="card ripples" :class="project.color">
-      <h2 v-html="project.title"></h2>
-      <p class="summary" v-text="project.description"></p>
-      <hr>
-      <p class="tech"><span v-for="skill in project.skills" v-text="skill"></span></p>
-    </a>
+    <?php foreach($projects as $project): ?>
+      <a href="<?php echo $project->link ?>" draggable="false" target="_href" class="card ripples <?php echo $project->color ?>">
+        <h2><?php echo $project->title ?></h2>
+        <p class="summary"><?php echo htmlentities($project->description); ?></p>
+        <hr>
+        <p class="tech"><?php foreach($project->skills as $skill): ?><span><?php echo htmlentities($skill); ?></span><?php endforeach; ?></p>
+      </a>
+    <?php endforeach; ?>
 
   </section>
   
   <!-- JavaScript -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.min.js"></script>
-  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" async src="script.js"></script>
 </body>
 </html>

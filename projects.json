@@ -1,0 +1,52 @@
+{
+    "projects": [
+    {
+        "title": "BookStack Platform",
+        "link": "https://www.bookstackapp.com",
+        "description": "An easy-to-use and free platform for sharing documentation.",
+        "skills": ["Laravel", "MySQL", "Angular JS", "PHP"],
+        "color": "yellow"
+    }, {
+        "title": "Social Share Links",
+        "link": "https://social-links.danb.me/",
+        "description": "A site to generate anchor links for social sharing.",
+        "skills": ["HTML", "CSS", "JavaScript", "SASS"],
+        "color": "orange"
+    }, {
+        "title": "The Brazen Project",
+        "link": "https://ssddanbrown.github.io/Brazen/",
+        "description": "An opinionated SASS & HTML based website starter kit.",
+        "skills": ["HTML", "CSS", "Gulp", "SASS"],
+        "color": "green"
+    }, {
+        "title": "I Want To <br> Learn",
+        "link": "https://iwanttolearn.io",
+        "description": "A site to list learning resources for web & coding based technologies.",
+        "skills": ["Laravel", "PHP", "SASS", "HHVM"],
+        "color": "blue"
+    }, {
+        "title": "Thermocouples For Android",
+        "link": "https://play.google.com/store/apps/details?id=com.southerntemp.thermocouples",
+        "description": "An app for viewing and calculating thermocouple info.",
+        "skills": ["Android", "Java", "Material Design"],
+        "color": "red"
+    }, {
+        "title": "Retherm For Android",
+        "link": "https://play.google.com/store/apps/details?id=me.danb.retherm",
+        "description": "An app to convert between RTD resistance and temperature.",
+        "skills": ["Android", "Java", "Thermal Calculation"],
+        "color": "yellow"
+    }, {
+        "title": "E-bikeshop Ecommerce",
+        "link": "https://www.e-bikeshop.co.uk",
+        "description": "An beautiful online shop selling electric bikes.",
+        "skills": ["PHP", "Web Design", "ElasticSearch"],
+        "color": "purple"
+    }, {
+        "title": "E-bikeshop Blog",
+        "link": "https://www.e-bikeshop.co.uk/blog",
+        "description": "The popular blog for e-bikeshop with electric bike news.",
+        "skills": ["Wordpress", "SASS", "HTML", "PHP"],
+        "color": "green"
+    }]
+}
