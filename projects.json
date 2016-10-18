@@ -7,22 +7,22 @@
         "skills": ["Laravel", "MySQL", "Angular JS", "PHP"],
         "color": "yellow"
     }, {
-        "title": "Social Share Links",
+        "title": "Haste Templating",
         "link": "https://social-links.danb.me/",
-        "description": "A site to generate anchor links for social sharing.",
-        "skills": ["HTML", "CSS", "JavaScript", "SASS"],
+        "description": "HTML Awesomely Simple Templating Engine.",
+        "skills": ["Golang", "HTML", "CSS"],
         "color": "orange"
     }, {
-        "title": "The Brazen Project",
+        "title": "Viewr Image Browser",
         "link": "https://ssddanbrown.github.io/Brazen/",
-        "description": "An opinionated SASS & HTML based website starter kit.",
-        "skills": ["HTML", "CSS", "Gulp", "SASS"],
+        "description": "An image-focused subreddit browser written in VueJS.",
+        "skills": ["VueJS", "CSS", "Gulp", "JS"],
         "color": "green"
     }, {
         "title": "I Want To <br> Learn",
         "link": "https://iwanttolearn.io",
         "description": "A site to list learning resources for web & coding based technologies.",
-        "skills": ["Laravel", "PHP", "SASS", "HHVM"],
+        "skills": ["Laravel", "PHP7", "SASS"],
         "color": "blue"
     }, {
         "title": "Thermocouples For Android",
