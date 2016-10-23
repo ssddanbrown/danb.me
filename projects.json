@@ -8,13 +8,13 @@
         "color": "yellow"
     }, {
         "title": "Haste Templating",
-        "link": "https://social-links.danb.me/",
+        "link": "https://github.com/ssddanbrown/haste",
         "description": "HTML Awesomely Simple Templating Engine.",
         "skills": ["Golang", "HTML", "CSS"],
         "color": "orange"
     }, {
         "title": "Viewr Image Browser",
-        "link": "https://ssddanbrown.github.io/Brazen/",
+        "link": "https://danb.me/viewr/",
         "description": "An image-focused subreddit browser written in VueJS.",
         "skills": ["VueJS", "CSS", "Gulp", "JS"],
         "color": "green"

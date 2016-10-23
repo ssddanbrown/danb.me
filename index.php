@@ -4,7 +4,7 @@
 
   <!-- Meta Tags -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1">
+  <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#73B3B3" />
 
   <title>Dan Brown - UK Web Developer</title>

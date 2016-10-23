@@ -66,6 +66,9 @@
 	&.purple {
 		background-color: #DCBDF9;
 	}
+	svg {
+		pointer-events: none;
+	}
 }
 
 // Animation-specific card stuff

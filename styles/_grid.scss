@@ -15,6 +15,12 @@ div[class^="col-"] img {
   }
 }
 
+@include smaller-than(1040px) {
+  .container {
+    max-width: 700px;
+  }
+}
+
 .row {
   margin-left: -$-m;
   margin-right: -$-m;
