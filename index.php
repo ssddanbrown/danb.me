@@ -41,7 +41,8 @@
    ?>
 
   <section class="container" id="projects">
-    <h2>My Latest Projects</h2>
+    <h3>My Latest Projects</h3>
+    <br>
 
     <?php foreach($projects as $project): ?>
       <a href="<?php echo $project->link ?>" draggable="false" target="_href" class="card ripples <?php echo $project->color ?>">
