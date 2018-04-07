@@ -32,16 +32,29 @@
       </ul>
     </div>
   </header>
+  
+  <?php
+    $feed = simplexml_load_string(file_get_contents('https://danb.me/blog/index.xml'));
+  ?>
+
+  <section class="container" id="blog">
+    <h3>Latest Blog Posts</h3>
+    <?php foreach($feed->channel->item as $post): ?>
+      <?php $date = (new DateTime($post->pubDate))->format('Y-m-d'); ?>
+      <article class="blogpost">
+        <h5><a href="<?php echo $post->link; ?>"><?php echo $date . ' &nbsp; ' . $post->title; ?></a></h5>
+      </article>
+    <?php endforeach; ?>
+  </section>
 
   <?php 
-
     $projectData = file_get_contents('projects.json');
     $projects = json_decode($projectData)->projects;
 
    ?>
 
   <section class="container" id="projects">
-    <h3>My Latest Projects</h3>
+    <h3>Latest Projects</h3>
     <br>
 
     <?php foreach($projects as $project): ?>
