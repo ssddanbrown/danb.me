@@ -4,20 +4,13 @@
   "description": "The source for my personal portfolio",
   "main": "index.html",
   "scripts": {
-    "dev": "gulp watch",
-    "build": "gulp production",
+    "dev": "webby",
+    "build": "echo \"Build!\"",
     "serve": "php -S localhost:8080",
     "deploy": "rsync -avz --exclude node_modules/ --exclude .git/  ./ dan@sandcat.danb.me:/var/www/danb.me/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.2.0",
-    "gulp-livereload": "^4.0.1",
-    "gulp-sass": "^4.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "node-sass": "^4.12.0"
-  }
+  "devDependencies": {}
 }
