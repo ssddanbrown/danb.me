@@ -1,37 +1,30 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var livereload = require('gulp-livereload');
-var sourcemaps = require('gulp-sourcemaps');
-var minifyCss = require('gulp-minify-css');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const livereload = require('gulp-livereload');
+const sourcemaps = require('gulp-sourcemaps');
+const minifyCss = require('gulp-clean-css');
 
 gulp.task('sass-dev', function () {
-    gulp.src('./styles/*.scss')
+    return gulp.src('./styles/*.scss')
       .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-          browsers: ['last 2 versions']
-        }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./dist'))
         .pipe(livereload());
 });
 
 gulp.task('sass', function () {
-    gulp.src('./styles/*.scss')
+    return gulp.src('./styles/*.scss')
         .pipe(sass())
-        .pipe(autoprefixer({
-          browsers: ['last 2 versions']
-        }))
         .pipe(minifyCss())
         .pipe(gulp.dest('./dist'))
 });
 
-gulp.task('default', ['sass-dev']);
-gulp.task('production', ['sass']);
+gulp.task('default', gulp.parallel('sass-dev'));
+gulp.task('production', gulp.parallel('sass'));
 
-gulp.task('watch', ['sass-dev'], function() {
-	livereload.listen();
+gulp.task('watch', gulp.series('sass-dev', function() {
+  livereload.listen();
   gulp.watch(['*.php', '*.js']).on('change', livereload.changed);
-	gulp.watch('./styles/**', ['sass-dev']);
-});
+  gulp.watch('./styles/**', gulp.series('sass-dev'));
+}));
