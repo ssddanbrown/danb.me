@@ -1,0 +1,75 @@
+[
+  {
+    "title": "BookStack Platform",
+    "link": "https://www.bookstackapp.com",
+    "description": "An easy-to-use and free platform for sharing documentation.",
+    "skills": [
+      "Laravel",
+      "MySQL",
+      "Webpack",
+      "PHP"
+    ]
+  },
+  {
+    "title": "Haste Templating",
+    "link": "https://github.com/ssddanbrown/haste",
+    "description": "HTML Awesomely Simple Templating Engine.",
+    "skills": [
+      "Golang",
+      "HTML",
+      "CSS"
+    ]
+  },
+  {
+    "title": "Viewr Image Browser",
+    "link": "https://danb.me/viewr/",
+    "description": "An image-focused subreddit browser written in VueJS.",
+    "skills": [
+      "VueJS",
+      "CSS",
+      "Gulp",
+      "JS"
+    ]
+  },
+  {
+    "title": "Thermocouples For Android",
+    "link": "https://play.google.com/store/apps/details?id=com.southerntemp.thermocouples",
+    "description": "An app for viewing and calculating thermocouple info.",
+    "skills": [
+      "Android",
+      "Java",
+      "Material Design"
+    ]
+  },
+  {
+    "title": "Retherm For Android",
+    "link": "https://play.google.com/store/apps/details?id=me.danb.retherm",
+    "description": "An app to convert between RTD resistance and temperature.",
+    "skills": [
+      "Android",
+      "Java",
+      "Thermal Calculation"
+    ]
+  },
+  {
+    "title": "E-bikeshop Ecommerce",
+    "link": "https://www.e-bikeshop.co.uk",
+    "description": "An beautiful online shop selling electric bikes.",
+    "skills": [
+      "PHP",
+      "Web Design",
+      "ElasticSearch"
+    ]
+  },
+  {
+    "title": "E-bikeshop Blog",
+    "link": "https://www.e-bikeshop.co.uk/blog",
+    "description": "The popular blog for e-bikeshop with electric bike news.",
+    "skills": [
+      "Wordpress",
+      "SASS",
+      "HTML",
+      "PHP"
+    ]
+  }
+]
