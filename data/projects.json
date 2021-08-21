@@ -1,5 +1,16 @@
 [
   {
+    "title": "Mailbag",
+    "link": "https://github.com/ssddanbrown/mailbag",
+    "description": "A system for managing batch sends to subscriber lists.",
+    "skills": [
+      "Laravel",
+      "SQLite",
+      "Tailwind CSS",
+      "PHP"
+    ]
+  },
+  {
     "title": "BookStack Platform",
     "link": "https://www.bookstackapp.com",
     "description": "An easy-to-use and free platform for sharing documentation.",
