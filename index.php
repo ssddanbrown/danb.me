@@ -17,10 +17,6 @@
     <style>
         <?php include('src/styles.css'); ?>
     </style>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com/">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
@@ -63,7 +59,8 @@
 
             <div class="project-container">
                 <?php foreach ($projects as $project): ?>
-                    <a href="<?php echo $project->link ?>" draggable="false" rel="noopener" target="_href" class="project">
+                    <a href="<?php echo $project->link ?>" draggable="false" rel="noopener" target="_href"
+                       class="project">
                         <h3><?php echo $project->title ?></h3>
                         <p class="summary"><?php echo htmlentities($project->description); ?></p>
                         <p class="tech"><?php foreach ($project->skills as $skill): ?>
