@@ -52,44 +52,17 @@ table {
 /**
  * Main layout
  */
-html {
-	height: 100%;
-}
+
 body {
 	display: flex;
-	height: 100%;
-	overflow: hidden;
-}
-body > section {
-	height: 100%;
-	overflow-y: scroll;
-	flex: 1;
-	box-shadow: 0 0 24px 0 rgba(0, 0, 0, .3);
-}
-body > aside {
-	flex-basis: 10vw;
-	background: #EEE;
-	overflow: hidden;
-}
-.content-wrap {
-	padding: 3rem 4rem;
+	justify-content: center;
+	background-color: #F2f2f2;
 }
 
-@media (max-width: 400px) {
-	body {
-		flex-direction: column;
-		overflow: initial;
-		height: auto;
-	}
-	body > aside {
-		flex-basis: 20vw;
-	}
-	body > section {
-		overflow: initial;
-	}
-	.content-wrap {
-		padding: 2rem;
-	}
+.content-wrap {
+	max-width: 800px;
+	padding: 3rem 4rem;
+	margin: 3rem 4rem;
 }
 
 
@@ -113,7 +86,7 @@ p {
 
 h1 {
 	font-size: 3rem;
-	font-weight: 700;
+	font-weight: 400;
 }
 
 h2 {
@@ -147,6 +120,23 @@ a {
 .social a {
 	color: #137092;
 }
+
+
+/**
+ * Card Styles
+ */
+.card {
+	background-color: #FFF;
+	border-radius: 1rem;
+	box-shadow: 0 0 .5rem 0rem rgba(0, 0, 0, .2);
+	overflow: hidden;
+}
+.card.blue {
+	background-color: rgb(211, 227, 236);
+	color: hsl(201.6, 79.7%, 47.6%);
+}
+
+
 
 /**
  * Projects
@@ -230,8 +220,8 @@ a {
 	font-weight: 400;
 	font-display: swap;
 	src: local(''),
-	url('./fonts/roboto-v27-latin-regular.woff2') format('woff2'),
-	url('./fonts/roboto-v27-latin-regular.woff') format('woff');
+	url('../fonts/roboto-v27-latin-regular.woff2') format('woff2'),
+	url('../fonts/roboto-v27-latin-regular.woff') format('woff');
 }
 
 /* roboto-700 - latin */
@@ -241,6 +231,38 @@ a {
 	font-weight: 700;
 	font-display: swap;
 	src: local(''),
-	url('./fonts/roboto-v27-latin-700.woff2') format('woff2'),
-	url('./fonts/roboto-v27-latin-700.woff') format('woff');
+	url('../fonts/roboto-v27-latin-700.woff2') format('woff2'),
+	url('../fonts/roboto-v27-latin-700.woff') format('woff');
+}
+
+
+/**
+ * Section Grids
+ */
+.grid {
+	display: grid;
+	gap: 1rem;
+}
+
+#about {
+	grid-template: repeat(4, min-content) / repeat(4, 1fr);
+}
+
+.grid-item-wide {
+	grid-column-end: span 2;
+}
+
+.grid-item-tall {
+	grid-row-end: span 2;
+}
+
+/**
+ * Content Utils
+ */
+.image-cover {
+	object-fit: cover;
+	display: block;
+	object-position: 50% 50%;
+	width: 100%;
+	height: 100%;
 }
