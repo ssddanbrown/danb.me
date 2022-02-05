@@ -47,6 +47,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+*, *:after, *::before {
+	box-sizing: border-box;
+}
 
 
 /**
@@ -54,15 +57,23 @@ table {
  */
 
 body {
-	display: flex;
-	justify-content: center;
-	background-color: #F2f2f2;
+	background-color: #fafcfd;
 }
 
 .content-wrap {
-	max-width: 800px;
-	padding: 3rem 4rem;
-	margin: 3rem 4rem;
+	max-width: 1000px;
+	padding: 1rem 4rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#canvas {
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 
@@ -90,35 +101,100 @@ h1 {
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	font-weight: 700;
-	text-transform: uppercase;
-	color: #555;
-	margin-top: 3rem;
+	color: #333;
+	margin-top: 1.4rem;
 	margin-bottom: 1rem;
 }
 
 h3 {
 	font-size: 1.5rem;
+	margin-bottom: .5em;
 }
 
 a {
 	color: #297f37;
 }
 
+a:not(.card) {
+	transition: all ease-in-out 120ms;
+}
+
+a:not(.card):hover {
+	color: #76ac7f;
+}
+
+.dropcap {
+	float: left;
+	font-size: 1.8rem;
+	padding-right: .4rem;
+	padding-bottom: .1rem;
+}
 
 /**
  * Header
  */
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: #000;
+	margin-top: 1rem;
+}
+
 .logo {
-	margin-bottom: .4rem;
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 0;
 }
 .social li {
 	display: inline-block;
 	margin-right: 1rem;
 }
 .social a {
-	color: #137092;
+	color: inherit;
+}
+
+.social-icons {
+	text-align: right;
+}
+.social-icon {
+	width: 2.6rem;
+	height: 2.6rem;
+	display: inline-flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	margin-left: 1rem;
+	box-shadow: 0 0 0 0 rgba(0,0,0 0);
+	border-radius: 50%;
+	overflow: hidden;
+}
+.social-icon:after {
+	content: '';
+	width: 100%;
+	display: block;
+	padding-bottom: 100%;
+	position: absolute;
+	background-color: currentColor;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	opacity: 0.15;
+	border: 1px solid currentColor;
+}
+.social-icon:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 2px 12px 0 rgba(0,0,0,.10);
+}
+.social-icon svg {
+	z-index: 5;
+	width: 50%;
+	color: inherit;
+	fill: currentColor;
+	display: block;
 }
 
 
@@ -127,13 +203,15 @@ a {
  */
 .card {
 	background-color: #FFF;
-	border-radius: 1rem;
-	box-shadow: 0 0 .5rem 0rem rgba(0, 0, 0, .2);
+	border-radius: 4px;
 	overflow: hidden;
 }
+.p-1 {
+	padding: 1rem;
+}
 .card.blue {
-	background-color: rgb(211, 227, 236);
-	color: hsl(201.6, 79.7%, 47.6%);
+	background-color: #90CAF9;
+	color: #0D47A1;
 }
 
 
@@ -141,21 +219,22 @@ a {
 /**
  * Projects
  */
+ #projects {
+	 grid-column-end: span 2;
+ }
 .project-container {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 -1rem;
 	align-items: stretch;
 	justify-content: flex-start;
-	transform: s
 }
 
 .project {
 	flex: 1;
-	flex-grow: 0;
+	flex-grow: 1;
 	flex-basis: 200px;
 	border: 1px solid #DDD;
-	border-radius: 8px;
 	padding: 2rem;
 	display: flex;
 	flex-direction: column;
@@ -163,11 +242,12 @@ a {
 	color: #000;
 	margin: 0 1rem 2rem 1rem;
 	transform: translateY(0);
-	transition: all ease-in-out 240ms;
+	transition: all ease-in-out 120ms;
 }
+
 .project:hover {
 	transform: translateY(-3px);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, .07), 0 5px 15px rgba(0, 0, 0, .01);
+	box-shadow: 0 3px 16px 2px rgba(0,0,0,.06);
 }
 .project .tech {
 	margin-top: auto;
@@ -182,10 +262,10 @@ a {
 	position: relative;
 	overflow: hidden;
 	font-size: .9rem;
-	margin-right: 1rem;
-	margin-bottom: .75rem;
+	margin-right: .5rem;
+	margin-bottom: .4rem;
 	color: #137092;
-	border-radius: .5rem;
+	border-radius: 4px;
 	padding: 6px 12px;
 	line-height: 1;
 }
@@ -245,15 +325,12 @@ a {
 }
 
 #about {
-	grid-template: repeat(4, min-content) / repeat(4, 1fr);
+	grid-template-columns: 2fr 3fr;
 }
 
-.grid-item-wide {
-	grid-column-end: span 2;
-}
-
-.grid-item-tall {
-	grid-row-end: span 2;
+.profile-image {
+	min-height: 200px;
+	min-width: 200px;
 }
 
 /**
@@ -262,7 +339,22 @@ a {
 .image-cover {
 	object-fit: cover;
 	display: block;
-	object-position: 50% 50%;
+	object-position: 60% 50%;
 	width: 100%;
 	height: 100%;
+
+}
+
+
+@media (max-width: 780px) {
+	#about {
+		display: block;
+	}
+	.content-wrap {
+		padding: 1rem 1rem;
+	}
+	.social-icon {
+		margin-bottom: .2rem;
+		margin-left: .5rem;
+	}
 }
