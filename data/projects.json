@@ -1,16 +1,5 @@
 [
   {
-    "title": "Mailbag",
-    "link": "https://github.com/ssddanbrown/mailbag",
-    "description": "A system for managing batch sends to subscriber lists.",
-    "skills": [
-      "Laravel",
-      "SQLite",
-      "Tailwind CSS",
-      "PHP"
-    ]
-  },
-  {
     "title": "BookStack",
     "link": "https://www.bookstackapp.com",
     "description": "An easy-to-use and free platform for sharing documentation.",
@@ -19,6 +8,39 @@
       "MySQL",
       "Webpack",
       "PHP"
+    ]
+  },
+  {
+    "title": "RSS",
+    "link": "https://github.com/ssddanbrown/rss",
+    "description": "A simple twitter-feed-style RSS aggregator.",
+    "skills": [
+      "Laravel",
+      "SQLite",
+      "Tailwind",
+      "PHP",
+      "Vue.js"
+    ]
+  },
+  {
+    "title": "Mailbag",
+    "link": "https://github.com/ssddanbrown/mailbag",
+    "description": "A system for managing batch sends to subscriber lists.",
+    "skills": [
+      "Laravel",
+      "SQLite",
+      "Tailwind",
+      "PHP"
+    ]
+  },
+  {
+    "title": "Wirestat",
+    "link": "https://github.com/ssddanbrown/wirestat",
+    "description": "A basic HTTP/JSON based monitoring system",
+    "skills": [
+      "Golang",
+      "JSON",
+      "Linux"
     ]
   },
   {
@@ -36,7 +58,7 @@
     "link": "https://danb.me/viewr/",
     "description": "An image-focused subreddit browser written in VueJS.",
     "skills": [
-      "VueJS",
+      "Vue.js",
       "CSS",
       "Gulp",
       "JS"

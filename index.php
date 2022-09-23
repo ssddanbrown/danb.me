@@ -58,7 +58,7 @@
             <p>
                 <span class="dropcap">👋</span> Hello! I'm Dan, a UK based full stack web developer with a love of open source software.
                 Most of my free time is spent working on <a href="https://www.bookstackapp.com" target="_blank">BookStack</a>,
-                giving my cat some pets, playing video-games or walking around the Hampshire countryside.
+                 playing video-games or walking around the Hampshire countryside.
             </p>
 
             <p>
@@ -66,6 +66,17 @@
                 dabble in Go, NodeJS and Android development.
             </p>
 
+            <h2>Random Side Activities</h2>
+
+            <ul>
+                <li>🎥 <a href="https://www.youtube.com/c/BookStackApp" target="_blank">BookStack YouTube Channel</a></li>
+                <li>🎥 <a href="https://www.youtube.com/channel/UCGDhoKgOoqPX9Gts9GIuyuQ" target="_blank">DOSS YouTube Channel</a></li>
+                <li>📷 <a href="https://danb.me/gallery/" target="_blank">Photo Gallery</a></li>
+            </ul>
+
+        </section>
+
+        <section class="container wide">
             <div id="blog">
                 <h2>Latest Blog Posts</h2>
                 <?php foreach ($posts as $post) : ?>
@@ -74,8 +85,9 @@
                         <p><a href="<?php echo $post->link; ?>"><?php echo $date . ' &nbsp; ' . $post->title; ?></a></p>
                     </article>
                     <?php $postCount++; ?>
-                    <?php if($postCount > 4) break; ?>
+                    <?php if($postCount > 6) break; ?>
                 <?php endforeach; ?>
+                <p><br>📰 <a href="/blog">View all</a></p>
             </div>
         </section>
 
@@ -83,7 +95,7 @@
         $projects = json_decode(file_get_contents('./data/projects.json'));
         ?>
 
-        <section class="container" id="projects">
+        <section class="container wide" id="projects">
             <h2>Latest Projects</h2>
 
             <div class="project-container">

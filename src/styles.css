@@ -132,6 +132,10 @@ a:not(.card):hover {
 	padding-bottom: .1rem;
 }
 
+li {
+	margin-bottom: .2rem;
+}
+
 /**
  * Header
  */
@@ -219,15 +223,12 @@ header {
 /**
  * Projects
  */
- #projects {
-	 grid-column-end: span 2;
- }
 .project-container {
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0 -1rem;
 	align-items: stretch;
 	justify-content: flex-start;
+	gap: 2rem;
 }
 
 .project {
@@ -240,7 +241,6 @@ header {
 	flex-direction: column;
 	text-decoration: none;
 	color: #000;
-	margin: 0 1rem 2rem 1rem;
 	transform: translateY(0);
 	transition: all ease-in-out 120ms;
 }
@@ -261,9 +261,9 @@ header {
 	display: inline-block;
 	position: relative;
 	overflow: hidden;
-	font-size: .9rem;
-	margin-right: .5rem;
-	margin-bottom: .4rem;
+	font-size: .8rem;
+	margin-right: .3rem;
+	margin-bottom: .2rem;
 	color: #137092;
 	border-radius: 4px;
 	padding: 6px 12px;
@@ -277,7 +277,7 @@ header {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	opacity: 0.15;
+	opacity: 0.12;
 	background-color: currentColor;
 }
 .tech span:nth-child(4n-2) {
@@ -322,6 +322,10 @@ header {
 .grid {
 	display: grid;
 	gap: 1rem;
+}
+
+.grid > .wide {
+	grid-column-end: span 2;
 }
 
 #about {
