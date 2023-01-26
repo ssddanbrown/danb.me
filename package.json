@@ -7,7 +7,7 @@
     "dev": "webby",
     "build": "echo \"Build!\"",
     "serve": "php -S localhost:8080",
-    "deploy": "rsync -avz --exclude node_modules/ --exclude .git/  ./ dan@sandcat.danb.me:/var/www/danb.me/",
+    "deploy": "rsync -avz --exclude node_modules/ --exclude .git/  ./ sandcat:/var/www/danb.me/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
