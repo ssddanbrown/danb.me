@@ -24,9 +24,7 @@
 
 <body>
 
-    <canvas id="canvas"></canvas>
-
-    <header class="content-wrap">
+    <!-- <header class="content-wrap">
         <h1 class="logo">Dan Brown</h1>
         <div class="social-icons">
             <a href="https://fosstodon.org/@danb" rel="me" target="_blank" class="social-icon" style="color: #595aff;" title="Mastodon Profile"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 16 16">
@@ -39,79 +37,102 @@
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg></a>
         </div>
-    </header>
+    </header> -->
 
-    <section id="about" class="content-wrap grid">
+    <div class="window">
+        <div class="window-titlebar bezel-out">
+            <h1 class="window-title">Dan Brown</h1>
+            <div class="window-title-decoration">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="window-content bezel-out">
 
-        <div class="card profile-image">
-            <img src="./images/me.webp" width="1200" height="1168" alt="Image of Dan Brown" style="background-color: #c7c0b2;" class="image-cover">
+            <div class="window-flex">
+                <div>
+                    <div class="window-panel">
+                        <div class="window-panel-inner">
+                            <div class="bezel-in-thin-hard">
+                                <img src="./images/me.png" width="400" height="400" alt="Image of Dan Brown" style="background-color: #c7c0b2;" class="image-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Hello! I'm Dan, a UK based full stack web developer with a love of open source software.
+                        Most of my free time is spent working on <a href="https://www.bookstackapp.com" target="_blank">BookStack</a>,
+                        playing video-games or walking around the Hampshire countryside.
+                    </p>
+
+                    <p>
+                        I primarily develop in PHP using Laravel, with VueJS being my front-end framework of choice, but I also 
+                        dabble in Go, NodeJS and Android development.
+                    </p>
+
+                    <h2 class="window-section-title"><span>Random Side Activities</span></h2>
+
+                    <ul>
+                        <li>🎥 <a href="https://www.youtube.com/c/BookStackApp" target="_blank">BookStack YouTube Channel</a></li>
+                        <li>🎥 <a href="https://www.youtube.com/channel/UCGDhoKgOoqPX9Gts9GIuyuQ" target="_blank">DOSS YouTube Channel</a></li>
+                        <li>📷 <a href="https://danb.me/gallery/" target="_blank">Photo Gallery</a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+         
+
         </div>
 
-        <?php
-        $feed = simplexml_load_string(file_get_contents('https://danb.me/blog/index.xml'));
-        $posts = $feed->channel->item;
-        $postCount = 0;
-        ?>
+        <div class="window-content bezel-out">
+            <?php
+            $feed = simplexml_load_string(file_get_contents('https://danb.me/blog/index.xml'));
+            $posts = $feed->channel->item;
+            $postCount = 0;
+            ?>
 
-        <section class="container p-1">
-            
-            <p>
-                <span class="dropcap">👋</span> Hello! I'm Dan, a UK based full stack web developer with a love of open source software.
-                Most of my free time is spent working on <a href="https://www.bookstackapp.com" target="_blank">BookStack</a>,
-                 playing video-games or walking around the Hampshire countryside.
-            </p>
+            <section>
+                <div>
+                    <h2>Latest Blog Posts</h2>
+                    <?php foreach ($posts as $post) : ?>
+                        <?php $date = (new DateTime($post->pubDate))->format('Y-m-d'); ?>
+                        <article>
+                            <p><a href="<?php echo $post->link; ?>"><?php echo $date . ' &nbsp; ' . $post->title; ?></a></p>
+                        </article>
+                        <?php $postCount++; ?>
+                        <?php if($postCount > 6) break; ?>
+                    <?php endforeach; ?>
+                    <p><br>📰 <a href="/blog">View all</a></p>
+                </div>
+            </section>
+        </div>
 
-            <p>
-                I primarily develop in PHP using Laravel, with VueJS being my front-end framework of choice, but I also 
-                dabble in Go, NodeJS and Android development.
-            </p>
+        <div class="window-content bezel-out">
+            <?php
+            $projects = json_decode(file_get_contents('./data/projects.json'));
+            ?>
 
-            <h2>Random Side Activities</h2>
+            <section>
+                <h2>Latest Projects</h2>
 
-            <ul>
-                <li>🎥 <a href="https://www.youtube.com/c/BookStackApp" target="_blank">BookStack YouTube Channel</a></li>
-                <li>🎥 <a href="https://www.youtube.com/channel/UCGDhoKgOoqPX9Gts9GIuyuQ" target="_blank">DOSS YouTube Channel</a></li>
-                <li>📷 <a href="https://danb.me/gallery/" target="_blank">Photo Gallery</a></li>
-            </ul>
+                <div >
+                    <?php foreach ($projects as $project) : ?>
+                        <a href="<?php echo $project->link ?>" draggable="false" rel="noopener" target="_href">
+                            <h3><?php echo $project->title ?></h3>
+                            <p class="summary"><?php echo htmlentities($project->description); ?></p>
+                            <p class="tech"><?php foreach ($project->skills as $skill) : ?>
+                                    <span><?php echo htmlentities($skill); ?></span><?php endforeach; ?>
+                            </p>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
 
-        </section>
-
-        <section class="container wide">
-            <div id="blog">
-                <h2>Latest Blog Posts</h2>
-                <?php foreach ($posts as $post) : ?>
-                    <?php $date = (new DateTime($post->pubDate))->format('Y-m-d'); ?>
-                    <article class="blogpost">
-                        <p><a href="<?php echo $post->link; ?>"><?php echo $date . ' &nbsp; ' . $post->title; ?></a></p>
-                    </article>
-                    <?php $postCount++; ?>
-                    <?php if($postCount > 6) break; ?>
-                <?php endforeach; ?>
-                <p><br>📰 <a href="/blog">View all</a></p>
-            </div>
-        </section>
-
-        <?php
-        $projects = json_decode(file_get_contents('./data/projects.json'));
-        ?>
-
-        <section class="container wide" id="projects">
-            <h2>Latest Projects</h2>
-
-            <div class="project-container">
-                <?php foreach ($projects as $project) : ?>
-                    <a href="<?php echo $project->link ?>" draggable="false" rel="noopener" target="_href" class="project card">
-                        <h3><?php echo $project->title ?></h3>
-                        <p class="summary"><?php echo htmlentities($project->description); ?></p>
-                        <p class="tech"><?php foreach ($project->skills as $skill) : ?>
-                                <span><?php echo htmlentities($skill); ?></span><?php endforeach; ?>
-                        </p>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-
-        </section>
-    </section>
+            </section>
+        </div>
+    </div>
 </body>
 
 </html>

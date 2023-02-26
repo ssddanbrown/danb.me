@@ -1,364 +1,150 @@
-/**
- * Variables
- */
-
-:root {
-}
-
-/**
- * Reset CSS
- * http://meyerweb.com/eric/tools/css/reset/  v2.0
- */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-*, *:after, *::before {
-	box-sizing: border-box;
+@font-face {
+	/* Font is 'Generic by AlphaNumericLlama' taken from https://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=390 */
+    font-family: 'genericmedium';
+    src: url('../fonts/generic-webfont.woff2') format('woff2'),
+         url('../fonts/generic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 
-/**
- * Main layout
- */
-
-body {
-	background-color: #fafcfd;
-}
-
-.content-wrap {
-	max-width: 1000px;
-	padding: 1rem 4rem;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#canvas {
-	position: fixed;
-	z-index: -1;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-
-/**
- * Core text styles
- */
-body {
-	font-family: 'Roboto', sans-serif;
+html, body {
+	font-family: 'genericmedium', serif;
 	font-size: 16px;
-	color: #000;
-	line-height: 1.4;
-}
-h1, h2, h3, h4, h5, h6 {
-	font-weight: bold;
-	margin-bottom: .75em;
+	background: #14b3ab;
 }
 
-p {
-	margin-bottom: .5em;
+.bezel-out {
+	border-top: 4px solid #DDD;
+	border-left: 4px solid #DDD;
+	border-bottom: 4px solid #666;
+	border-right: 4px solid #666;
 }
 
-h1 {
-	font-size: 3rem;
-	font-weight: 400;
+.bezel-in-thin-hard {
+	border-top: 3px solid #000;
+	border-left: 3px solid #000;
 }
 
-h2 {
-	font-size: 1.2rem;
-	font-weight: 700;
-	color: #333;
-	margin-top: 1.4rem;
-	margin-bottom: 1rem;
+.window {
+	max-width: 800px;
+	margin: 0 auto;
+	background-color: #BBB;
+	padding: 2px;
+	border: 2px double #000;
 }
 
-h3 {
-	font-size: 1.5rem;
-	margin-bottom: .5em;
-}
-
-a {
-	color: #297f37;
-}
-
-a:not(.card) {
-	transition: all ease-in-out 120ms;
-}
-
-a:not(.card):hover {
-	color: #76ac7f;
-}
-
-.dropcap {
-	float: left;
-	font-size: 1.8rem;
-	padding-right: .4rem;
-	padding-bottom: .1rem;
-}
-
-li {
-	margin-bottom: .2rem;
-}
-
-/**
- * Header
- */
-header {
+.window-titlebar {
+	background-color: #BBB;
+	margin-bottom: 2px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+}
+
+.window-title {
+	font-size: .9rem;
+	color: 0;
+	margin: 0;
+	padding: .2rem 1rem;
 	color: #000;
-	margin-top: 1rem;
+	font-weight: bold;
 }
 
-.logo {
-	font-size: 2rem;
-	font-weight: 700;
-	margin-bottom: 0;
-}
-.social li {
-	display: inline-block;
-	margin-right: 1rem;
-}
-.social a {
-	color: inherit;
-}
-
-.social-icons {
-	text-align: right;
-}
-.social-icon {
-	width: 2.6rem;
-	height: 2.6rem;
-	display: inline-flex;
-	position: relative;
-	align-items: center;
-	justify-content: center;
-	margin-left: 1rem;
-	box-shadow: 0 0 0 0 rgba(0,0,0 0);
-	border-radius: 50%;
-	overflow: hidden;
-}
-.social-icon:after {
-	content: '';
-	width: 100%;
-	display: block;
-	padding-bottom: 100%;
-	position: absolute;
-	background-color: currentColor;
-	left: 0;
-	top: 0;
-	z-index: 2;
-	opacity: 0.15;
-	border: 1px solid currentColor;
-}
-.social-icon:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 2px 12px 0 rgba(0,0,0,.10);
-}
-.social-icon svg {
-	z-index: 5;
-	width: 50%;
-	color: inherit;
-	fill: currentColor;
-	display: block;
-}
-
-
-/**
- * Card Styles
- */
-.card {
-	background-color: #FFF;
-	border-radius: 4px;
-	overflow: hidden;
-}
-.p-1 {
-	padding: 1rem;
-}
-.card.blue {
-	background-color: #90CAF9;
-	color: #0D47A1;
-}
-
-
-
-/**
- * Projects
- */
-.project-container {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: stretch;
-	justify-content: flex-start;
-	gap: 2rem;
-}
-
-.project {
-	flex: 1;
-	flex-grow: 1;
-	flex-basis: 200px;
-	border: 1px solid #DDD;
-	padding: 2rem;
+.window-title-decoration {
 	display: flex;
 	flex-direction: column;
-	text-decoration: none;
-	color: #000;
-	transform: translateY(0);
-	transition: all ease-in-out 120ms;
+	padding-right: 1rem;
+	gap: 4px;
+	flex: 1;
+	justify-content: center;
 }
-
-.project:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 3px 16px 2px rgba(0,0,0,.06);
-}
-.project .tech {
-	margin-top: auto;
-	margin-bottom: 0;
-	margin-bottom: -.75rem;
-}
-.project .summary {
-	margin-bottom: 1.5rem;
-}
-.tech span {
-	display: inline-block;
-	position: relative;
-	overflow: hidden;
-	font-size: .8rem;
-	margin-right: .3rem;
-	margin-bottom: .2rem;
-	color: #137092;
-	border-radius: 4px;
-	padding: 6px 12px;
-	line-height: 1;
-}
-.tech span::after {
-	display: block;
-	position: absolute;
-	content: '';
-	left: 0;
-	top: 0;
-	height: 100%;
+.window-title-decoration > div {
+	border-top: 1px solid #EEE;
+	border-left: 1px solid #EEE;
+	border-bottom: 1px solid #222;
+	border-right: 1px solid #222;
+	background-color: #BBB;
+	height: 3px;
 	width: 100%;
-	opacity: 0.12;
-	background-color: currentColor;
-}
-.tech span:nth-child(4n-2) {
-	color: #297f37;	
-}
-.tech span:nth-child(4n-1) {
-	color: #871b1b;	
-}
-.tech span:nth-child(4n) {
-	color: #4c3ec4;	
 }
 
-/**
- * Fonts
- */
-/* roboto-regular - latin */
-@font-face {
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: local(''),
-	url('../fonts/roboto-v27-latin-regular.woff2') format('woff2'),
-	url('../fonts/roboto-v27-latin-regular.woff') format('woff');
+.window-content {
+	background-color: #BBB;
+	overflow: hidden;
+	padding: 1rem;
 }
 
-/* roboto-700 - latin */
-@font-face {
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: local(''),
-	url('../fonts/roboto-v27-latin-700.woff2') format('woff2'),
-	url('../fonts/roboto-v27-latin-700.woff') format('woff');
+.window-panel {
+	border-top: 2px solid #666;
+	border-left: 2px solid #666;
+	border-bottom: 2px solid #DDD;
+	border-right: 2px solid #DDD;
+}
+.window-panel-inner {
+	border-top: 2px solid #DDD;
+	border-left: 2px solid #DDD;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+	padding: 1rem;
 }
 
+.window img {
+	width: 250px;
+	height: auto;
+	display: block;
+}
 
-/**
- * Section Grids
- */
-.grid {
-	display: grid;
+.window-flex {
+	display: flex;
+	flex-direction: row;
 	gap: 1rem;
 }
 
-.grid > .wide {
-	grid-column-end: span 2;
+.padded {
+	padding: 1rem;
 }
 
-#about {
-	grid-template-columns: 2fr 3fr;
-}
-
-.profile-image {
-	min-height: 200px;
-	min-width: 200px;
-}
-
-/**
- * Content Utils
- */
-.image-cover {
-	object-fit: cover;
+.window-section-title {
+	font-weight: bold;
+	margin: 1rem 0 1rem 0;
+	font-size: 1rem;
+	color: #3e3e3e;
+	position: relative;
 	display: block;
-	object-position: 60% 50%;
+}
+.window-section-title span {
+	background: #BBB;
+	padding: 0 0.5rem;
+	z-index: 3;
+	margin: 0 1rem;
+	position: relative;
+}
+.window-section-title::before {
+	content: '';
 	width: 100%;
-	height: 100%;
-
+	height: 4px;
+	display: block;
+	border-top: 2px solid #888;
+	border-bottom: 2px solid #888;
+	position: absolute;
+	left: 0;
+	top: calc(50% - 4px);
+	z-index: 1;
 }
 
+a {
+	text-decoration: underline;
+	color: #000;	
+}
 
-@media (max-width: 780px) {
-	#about {
-		display: block;
-	}
-	.content-wrap {
-		padding: 1rem 1rem;
-	}
-	.social-icon {
-		margin-bottom: .2rem;
-		margin-left: .5rem;
-	}
+ul {
+	list-style-type: square;
+	margin: 0;
+	padding-left: 1rem;
+}
+
+p, li, h2 {
+	/* text-shadow: .5px .5px #D5D5D5;
+	transform: scaleY(1.06); */
+	line-height: 1.3;
 }
