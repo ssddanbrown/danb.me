@@ -13,15 +13,28 @@ html, body {
 	font-size: 16px;
 }
 html {
+	background-color: #055753;
+}
+
+body {
+	padding: 1rem;
+	margin: 0;
+	position: relative;
 	background-color: #14b3ab;
+}
+
+.page-bg {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left:0;
+	display: block;
+	height: 100%;
+	width: 100%;
 	background-image: url('../images/bg.png');
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-attachment: fixed;
 	image-rendering: pixelated;
-}
-body {
-	padding: 1rem;
 }
 
 .bezel-out {
@@ -38,12 +51,14 @@ body {
 }
 
 .window {
+	position: relative;
 	max-width: 800px;
 	margin: 0 auto;
 	background-color: #BBB;
 	padding: 2px;
 	border: 2px double #000;
 	margin-bottom: 2rem;
+	z-index: 2;
 }
 
 .window-titlebar {

@@ -24,6 +24,8 @@
 
 <body>
 
+    <div class="page-bg"></div>
+
     <div class="window">
         <div class="window-titlebar bezel-out">
             <h1 class="window-title">Dan Brown</h1>
