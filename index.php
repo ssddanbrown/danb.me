@@ -12,12 +12,11 @@
 
     <!-- Icons -->
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
 
     <!-- Stylesheets -->
     <!-- <link rel="stylesheet" href="./src/styles.css"> -->
     <style>
-        <?php  include('src/styles.css'); 
+        <?php  include('src/styles.css');
         ?>
     </style>
 </head>
@@ -26,7 +25,7 @@
 
     <div class="page-bg"></div>
 
-    <div class="window" tabindex="-1">
+    <div class="window" tabindex="-1" id="window-about">
         <div class="window-titlebar bezel-out">
             <h1 class="window-title">Dan Brown</h1>
             <div class="window-title-decoration">
@@ -92,30 +91,36 @@
             ?>
 
             <div class="table-panel">
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="2"><h2>Latest Blog Posts</h2></th>
-                        </tr>
-                        <tr>
-                            <th>Date</th>
-                            <th>Post</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($posts as $post) : ?>
+                <div class="table-panel-inner">
+                    <table>
+                        <thead>
                             <tr>
-                            <?php 
-                            $postCount++;
-                            if ($postCount > 10) break;
-                            $date = (new DateTime($post->pubDate))->format('Y-m-d'); 
-                            ?>
-                            <td width="84" class="monospace"><?php echo $date; ?></td>
-                            <td><a href="<?php echo $post->link; ?>"><?php echo $post->title; ?></a></td>
+                                <th colspan="2"><h2>Latest Blog Posts</h2></th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                            <tr>
+                                <th width="84">Date</th>
+                                <th>Post</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="scroll-y-box">
+                        <table>
+                            <tbody>
+                                <?php foreach ($posts as $post) : ?>
+                                    <tr>
+                                    <?php 
+                                    $postCount++;
+                                    if ($postCount > 30) break;
+                                    $date = (new DateTime($post->pubDate))->format('Y-m-d'); 
+                                    ?>
+                                    <td width="84" class="monospace"><?php echo $date; ?></td>
+                                    <td><a href="<?php echo $post->link; ?>"><?php echo $post->title; ?></a></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <p></p>
             <div class="button-group right"><a href="/blog" class="button">All Blog Posts</a></div>
@@ -123,7 +128,90 @@
 
     </div>
 
-    <div class="window" tabindex="-1">
+    <div class="window" tabindex="-1" id="window-guestbook">
+        <div class="window-titlebar bezel-out">
+            <h2 class="window-title">Guestbook</h1>
+            <div class="window-title-decoration">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="window-content bezel-out">
+            <div class="window-panel">
+                <div class="window-panel-inner">
+                    <h3 class="window-panel-title">Live Guestbook</h3>
+                    <div class="window-panel-content">
+                        <div class="table-panel">
+                            <div class="table-panel-inner">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th width="80">Time</th>
+                                            <th>Message</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="scroll-y-box">
+                                    <table>
+                                        <colgroup>
+                                            <col width="80" />
+                                            <col/>
+                                        </colgroup>
+                                        <tbody id="guestbook-table">
+                                            <?php
+                                            require('messages.php');
+                                            $dateTime = new DateTime();
+                                            $dateTime = $dateTime->modify('-14 minutes');
+                                            for($i = 0; $i < 6; $i++):
+                                            ?>
+                                            <tr>
+                                                <td class="monospace"><?php echo $dateTime->format('H:i:s'); $dateTime->modify('+2 minutes'); $dateTime->modify('+15 seconds');  ?></td>
+                                                <td><?php echo htmlentities(getRandomMessage()); ?></td>
+                                            </tr>
+                                            <?php endfor; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="button-group right"><button type="button" class="button" id="guestbook-stop-button">Stop Updates</a></div>
+            <script>
+                const guestBookTable = document.getElementById('guestbook-table');
+                const guestBookStopButton = document.getElementById('guestbook-stop-button');
+                const scrollBox = guestBookTable.closest('.scroll-y-box');
+                let active = true;
+
+                guestBookStopButton.addEventListener('click', () => (active = false));
+
+                function addMessage() {
+                    fetch('./get_message.php').then(resp => resp.text()).then(text => {
+                        const row = document.createElement('tr');
+                        const timeTd = document.createElement('td');
+                        const msgTd = document.createElement('td');
+                        const date = new Date();
+                        msgTd.textContent = text;
+                        timeTd.textContent = date.toTimeString().split(' ')[0];
+                        timeTd.classList.add('monospace');
+                        row.append(timeTd, msgTd);
+                        guestBookTable.append(row);
+                    }).then(() => {
+                        if (!active) {
+                            return;
+                        }
+                        scrollBox.scrollTop = scrollBox.scrollHeight;
+                        setTimeout(addMessage, (Math.random() * 5000) + 2000);
+                    });
+                }
+                setTimeout(addMessage, 1000);
+            </script>
+        </div>
+    </div>
+
+    <div class="window" tabindex="-1" id="window-projects">
         <div class="window-titlebar bezel-out">
             <h2 class="window-title">Latest Projects</h1>
             <div class="window-title-decoration">
@@ -200,8 +288,9 @@
                 mouseStartX = event.clientX;
                 mouseStartY = event.clientY;
 
-                windowStartX = Number((elem.style.left || '0px').replace('px', ''));
-                windowStartY = Number((elem.style.top || '0px').replace('px', ''));
+                const computedStyles = window.getComputedStyle(elem);                
+                windowStartX = Number((elem.style.left || computedStyles.left).replace('px', ''));
+                windowStartY = Number((elem.style.top || computedStyles.top).replace('px', ''));
 
                 window.addEventListener('mousemove', moveEvent);
                 window.addEventListener('mouseup', upEvent);

@@ -21,6 +21,8 @@ body {
 	margin: 0;
 	position: relative;
 	background-color: #14b3ab;
+	min-width: 100%;
+	min-height: 100%;
 }
 
 .page-bg {
@@ -62,7 +64,7 @@ body {
 }
 
 .window:focus, .window:focus-within {
-	z-index: 5;
+	z-index: 50 !important;
 }
 
 .window-titlebar {
@@ -239,6 +241,9 @@ p, li, h2 {
     display: inline-flex;
     align-items: center;
     gap: .5rem;
+	background: transparent;
+	font-family: inherit;
+	font-size: 1rem;
 }
 .button:hover {
     background: rgba(255, 255, 255, 0.2);
@@ -278,11 +283,14 @@ p, li, h2 {
 	border-bottom: 2px solid #DDD;
 	border-right: 2px solid #DDD;
 }
-.table-panel table {
+
+.table-panel > table, .table-panel-inner {
 	border-top: 2px solid #DDD;
 	border-left: 2px solid #DDD;
 	border-bottom: 2px solid #999;
 	border-right: 2px solid #999;
+}
+.table-panel table {
 	width: 100%;
 	border-spacing: 0;
 }
@@ -295,6 +303,7 @@ p, li, h2 {
 }
 .table-panel td {
 	padding: .2rem .5rem;
+	vertical-align: top;
 }
 .table-panel td.monospace {
 	font-size: .8rem;
@@ -326,4 +335,41 @@ p, li, h2 {
 }
 .detail:first-child::before {
 	content: '';
+}
+
+.scroll-y-box {
+	overflow-y: scroll;
+	height: 240px;
+}
+
+#window-about  {
+	z-index: 4;
+}
+#window-guestbook {
+	z-index: 2;
+}
+#window-projects {
+	z-index: 3;
+}
+
+
+@media screen and (min-width: 1780px) and (min-height: 600px) {
+	body {
+		padding: 0;
+	}
+	.window {
+		position: absolute;
+	}
+	#window-about {
+		left: 50px;
+		top: 70px;
+	}
+	#window-projects {
+		left: 870px;
+		top: 490px;
+	}
+	#window-guestbook {
+		left: 830px;
+		top: 30px;
+	}
 }
