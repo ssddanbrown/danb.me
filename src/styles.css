@@ -61,11 +61,17 @@ body {
 	z-index: 2;
 }
 
+.window:focus, .window:focus-within {
+	z-index: 5;
+}
+
 .window-titlebar {
 	background-color: #BBB;
 	margin-bottom: 2px;
 	display: flex;
 	flex-direction: row;
+	cursor: grab;
+	user-select: none;
 }
 
 .window-title {
@@ -127,8 +133,16 @@ body {
 	padding: 0 .5rem;
 }
 
-.window-panel-list .window-panel {
-	margin: 2rem 0;
+.window-panel-list {
+	display: flex;
+	align-items: top;
+	gap: 2rem;
+	flex-wrap: wrap;
+	padding: 2rem 0;
+}
+.window-panel-list > * {
+	flex: 1;
+	min-width: 200px;
 }
 
 .window-panel-split-content {
@@ -301,7 +315,7 @@ p, li, h2 {
 .detail-list {
 	margin-bottom: .5rem;
 	display: flex;
-	gap: 1rem;
+	gap: .5rem;
 	flex-wrap: wrap;
 }
 .detail {

@@ -26,7 +26,7 @@
 
     <div class="page-bg"></div>
 
-    <div class="window">
+    <div class="window" tabindex="-1">
         <div class="window-titlebar bezel-out">
             <h1 class="window-title">Dan Brown</h1>
             <div class="window-title-decoration">
@@ -123,7 +123,7 @@
 
     </div>
 
-    <div class="window">
+    <div class="window" tabindex="-1">
         <div class="window-titlebar bezel-out">
             <h2 class="window-title">Latest Projects</h1>
             <div class="window-title-decoration">
@@ -139,6 +139,7 @@
             <section class="window-panel-list">
 
                 <?php foreach ($projects as $project) : ?>
+                    <div>
                     <div class="window-panel">
                         <div class="window-panel-inner">
                             <h3 class="window-panel-title"><?php echo $project->title ?></h3>
@@ -155,12 +156,58 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 <?php endforeach; ?>
 
             </section>
         </div>
     </div>
 
+    <script defer>
+        const windows = document.querySelectorAll('.window');
+        for (const windowEl of windows) {
+            makeDraggable(windowEl, '.window-titlebar');
+        }
+
+        /**
+         * @param {Element} elem
+         * @param {String} handleSelector
+         */
+        function makeDraggable(elem, handleSelector) {
+            let mouseStartX = 0;
+            let mouseStartY = 0;
+            let windowStartX = 0;
+            let windowStartY = 0;
+
+            const moveEvent = (event) => {
+                let offsetX = event.clientX - mouseStartX;
+                let offsetY = event.clientY - mouseStartY;
+                let newX = windowStartX + offsetX;
+                let newY = windowStartY + offsetY;
+                elem.style.left = `${newX}px`;
+                elem.style.top = `${newY}px`;
+            };
+
+            const upEvent = (event) => {
+                window.removeEventListener('mousemove', moveEvent);
+                window.removeEventListener('mouseup', upEvent);
+            };
+
+            elem.addEventListener('mousedown', event => {
+                if (event.target.closest(handleSelector) === null) {
+                    return;
+                }
+                mouseStartX = event.clientX;
+                mouseStartY = event.clientY;
+
+                windowStartX = Number((elem.style.left || '0px').replace('px', ''));
+                windowStartY = Number((elem.style.top || '0px').replace('px', ''));
+
+                window.addEventListener('mousemove', moveEvent);
+                window.addEventListener('mouseup', upEvent);
+            });
+        }
+    </script>
 </body>
 
 </html>
